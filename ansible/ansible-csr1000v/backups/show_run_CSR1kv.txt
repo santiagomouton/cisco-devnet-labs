@@ -1,0 +1,185 @@
+Building configuration...
+
+Current configuration : 3924 bytes
+!
+! Last configuration change at 17:50:30 UTC Sat Mar 26 2022
+!
+version 16.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+platform console virtual
+!
+hostname CSR1kv
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+ip domain name example.netacad.com
+!
+!
+!
+login on-success log
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+! 
+! 
+! 
+! 
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-1104638917
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1104638917
+ revocation-check none
+ rsakeypair TP-self-signed-1104638917
+!
+!
+crypto pki certificate chain TP-self-signed-1104638917
+ certificate self-signed 01
+  30820330 30820218 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 31313034 36333839 3137301E 170D3232 30333236 31373435 
+  34355A17 0D333030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D31 31303436 
+  33383931 37308201 22300D06 092A8648 86F70D01 01010500 0382010F 00308201 
+  0A028201 0100B4FE DD2942C5 8C8AFD35 090F5B59 B2C27016 C003CB4B 5652D45A 
+  7E23B912 BF3C4C79 E47F5758 49D8AD5A 219932DE 1AB65C69 81B3DF00 33FE88D8 
+  6F739C59 9681167F EC4CCA25 A7B60427 DFAB7470 CC1821C2 BF2ADFB9 C7B0072D 
+  DF7D15E6 24530334 42EC87BD 9BB65F1C 738F0651 0BFD2F15 A627A306 8E7CE4C3 
+  EDC16503 701F1C58 27F77A67 2A896639 31F9594F A1DBD0F3 FC2C9F58 C7C46112 
+  21AD97DB 3DADE078 72B3DEE1 E6FDAF35 BF4BE2C2 3CD1F9CC 1A691DD8 DA3BC0B8 
+  5328138F 8582C11C CA125F6D 3CAAC72C 8A70CDDF 3CED9695 DBCB3111 6AFD6818 
+  4B64233C 825DB87E F447A673 78A54D08 5642F369 CE83DFBB 1E80F27C AB604B8B 
+  90169C44 E6B10203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 
+  301F0603 551D2304 18301680 14EC33B7 AF7FD709 5B7A0904 78E44F87 35F6F3A1 
+  A5301D06 03551D0E 04160414 EC33B7AF 7FD7095B 7A090478 E44F8735 F6F3A1A5 
+  300D0609 2A864886 F70D0101 05050003 82010100 7DFC1CA7 1658AA94 124CCDAD 
+  A5C47797 EBA0732B 096E3614 DD0E5680 72960C00 638CB9BF AAF65C9D 1F5B8762 
+  2B75E707 3DDCA468 9D274E77 8F01FBF4 8AFDDA72 968E2681 EB874866 4685623C 
+  AAD9394D A97EDE79 39603716 B0805ECD 22279128 B8AE2972 00FB6088 493B7C76 
+  D023A7C7 4CF30A29 3EE3D203 A004D04A 2CDA9B58 E5E03523 A672C042 131992D0 
+  A4535726 63730F95 6BD8CB45 EABAA0E1 6FE7ACFC D23FA617 31996708 6329F082 
+  EC8876C4 40A0E7DA 0CE7575D C521AF11 AB95CB23 1AF9C4F1 9C111D4C 844A9C5D 
+  6150C699 B9717F93 50564FE5 F10E7882 E0D77D96 91A95436 5CCE8714 8BCF8BFE 
+  8CF78C7D 5D6E4E13 65D0524B 868231C1 7CBC1DD5
+  	quit
+!
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 9GOE4XRT8V7
+no license smart enable
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+netconf-yang
+!
+restconf
+!
+username cisco privilege 15 password 0 cisco123!
+!
+redundancy
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+!
+!
+interface GigabitEthernet1
+ description VBox
+ ip address dhcp
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+ip forward-protocol nd
+no ip http server
+ip http authentication local
+ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+banner motd ^C
+*                                           *
+**                                         **
+***                                       ***
+***  Cisco Networking Academy             ***
+***                                       ***
+***  This software is provided for        ***
+***   Educational Purposes                ***
+***    Only in Networking Academies       ***
+***                                       ***
+**                                         **
+*                                           *
+^C
+!
+line con 0
+ logging synchronous
+ stopbits 1
+line vty 0 4
+ login local
+ transport input ssh
+line vty 5 15
+ login local
+ transport input ssh
+!
+!
+!
+!
+!
+!
+end
